@@ -1,4 +1,6 @@
 # gulp-asset-versioning
+Its the same as original repo. but the only diff. is versioning all files even if its cloud import and without checking file paths.
+so if you change the base URL in the original project, still can versioning files.
 
 A plugin for gulp.js to add version after file's name by content hash.
 ### `test.html` -> `test.html?v=7f499bc7`
