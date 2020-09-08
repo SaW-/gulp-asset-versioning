@@ -1,11 +1,11 @@
 {
-  "name": "gulp-asset-versioning",
+  "name": "gulp-versioning-assets",
   "version": "0.1.3",
   "description": "a plugin for gulp.js to add version after file's name by content hash.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hashtroudi/gulp-asset-versioning.git"
+    "url": "git+https://github.com/SaW-/gulp-versioning-assets.git"
   },
   "author": "Morteza Hashtroudi",
   "engines": {
@@ -28,12 +28,12 @@
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3"
   },
-  "homepage": "https://github.com/hashtroudi/gulp-asset-versioning.git",
+  "homepage": "https://github.com/SaW-/gulp-versioning-assets.git",
   "bugs": {
-    "url": "https://github.com/hashtroudi/gulp-asset-versioning/issues"
+    "url": "https://github.com/SaW-/gulp-versioning-assets.git"
   },
   "maintainers": [
-    "Morteza Hashtroudi <me@hashtroudi.com>"
+    "Shady Amir <e.saw.90@gmail.com>"
   ],
   "directories": {
     "test": "test"

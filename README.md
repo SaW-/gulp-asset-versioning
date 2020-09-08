@@ -1,22 +1,22 @@
-# gulp-asset-versioning
+# gulp-versioning-assets
 Its the same as original repo. but the only diff. is versioning all files even if its cloud import and without checking file paths.
 so if you change the base URL in the original project, still can versioning files.
 
-A plugin for gulp.js to add version after file's name by content hash.
+A plugin for gulp.js to add version after file's name by random hash.
 ### `test.html` -> `test.html?v=7f499bc7`
 ### `test.css` -> `test.css?v=f83a98d9`
 
 ## Installation
 
 ```bash
-npm install gulp-asset-version
+npm install gulp-versioning-assets
 ```
 
 ## Usage
 
 ```js
 var gulp = require('gulp');
-var assetVersion = require('gulp-asset-version');
+var assetVersion = require('gulp-versioning-assets');
 
 gulp.task('css',function() {
     gulp.src("./test/styles/test.css")
