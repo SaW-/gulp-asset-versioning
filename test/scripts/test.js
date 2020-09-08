@@ -1,1 +1,1 @@
-console.log("gulp-asset-version");
+console.log("gulp-versioning-asset");
