@@ -20,6 +20,12 @@ var createHash = function (file, len) {
     return crypto.createHash('md5').update(file).digest('hex').substr(0, len);
 };
 
+var createHashRandom = function () {
+    var current_date = (new Date()).valueOf().toString();
+    var random = Math.random().toString();
+    return crypto.createHash('sha1').update(current_date + random).digest('hex');
+};
+
 module.exports = function (options) {
     return through.obj(function (file, enc, cb) {
         options = options || {};
@@ -42,7 +48,9 @@ module.exports = function (options) {
 
         for (var type in ASSET_REG) {
             if (type === "BACKGROUND" && !/\.(css|scss|less)$/.test(file.path)) {
-
+                var current_date = (new Date()).valueOf().toString();
+                var random = Math.random().toString();
+                crypto.createHash('sha1').update(current_date + random).digest('hex');
             } else {
                 content = content.replace(ASSET_REG[type], function (str, tag, src) {
                     src = src.replace(/(^['"]|['"]$)/g, '');
@@ -52,11 +60,11 @@ module.exports = function (options) {
                     }
                 
                     // remote resource
-                    if (/^https?:\/\//.test(src)) {
-                        return str;
-                    }
+                    // if (/^https?:\/\//.test(src)) {
+                    //     return str;
+                    // }
 
-                    var assetPath = options.assetPath || path.join(filePath, src);
+                    var assetPath = path.join(filePath, src);
 
                     if (src.indexOf('/') == 0) {
                         if (src.indexOf('//') != 0){
@@ -73,18 +81,17 @@ module.exports = function (options) {
                     assetPath = assetPath.replace(/(\?v=)\w{8}/, '');
                     src = src.replace(/(\?v=)\w{8}/, '');
 
-                    if (fs.existsSync(assetPath)) {
+                    // if (fs.existsSync(assetPath)) {
 
-                        var buf = fs.readFileSync(assetPath);
+                    //     var buf = fs.readFileSync(assetPath);
+                    //     var md5 = createHash(buf, hashLen);
+                    //     src=src+"?v="+md5; 
+                    // } else {
+                    //     return str;
+                    // }
 
-                        var md5 = createHash(buf, hashLen);
-                                                
-                            src=src+"?v="+md5; 
-                        
-                    } else {
-                        return str;
-                    }
-
+                    var md5 = createHashRandom();
+                    src=src+"?v="+md5; 
                     return tag + '"' + src + '"';
                 });
             }
